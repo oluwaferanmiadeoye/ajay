@@ -1,0 +1,496 @@
+:root {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-card: #1f1f1f;
+  --text-primary: #ffffff;
+  --text-secondary: #a0aec0;
+  --accent-blue: #3182ce;
+  --accent-purple: #805ad5;
+  --accent-green: #38a169;
+  --accent-red: #e53e3e;
+  --accent-orange: #dd6b20;
+  --transition-speed: 300ms;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: var(--bg-secondary);
+  width: 70px;
+  transition: width var(--transition-speed) ease;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.sidebar:hover {
+  width: 240px;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0;
+  margin-bottom: 1rem;
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+  color: var(--accent-blue);
+}
+
+.logo-text {
+  display: none;
+  margin-left: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sidebar:hover .logo-text {
+  display: block;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-speed) ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.nav-icon {
+  font-size: 1.25rem;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.nav-text {
+  display: none;
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+
+.sidebar:hover .nav-text {
+  display: block;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  padding-left: calc(70px + 2rem);
+  transition: padding-left var(--transition-speed) ease;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 200;
+  background: var(--accent-blue);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Sections */
+section {
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--accent-blue);
+  border-radius: 2px;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.hero-title {
+  font-size: 3rem;
+  background: linear-gradient(to right, #3182ce, #805ad5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.stat-card {
+  background-color: var(--bg-secondary);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Chain Sections */
+.chain-section {
+  margin-bottom: 3rem;
+}
+
+.chain-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.chain-icon {
+  font-size: 1.5rem;
+}
+
+.chain-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  transform: translateY(-2px);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background-color: var(--bg-card);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-image {
+  width: 100%;
+  height: 180px;
+  background-color: #2d3748;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-icon {
+  font-size: 4rem;
+  opacity: 0.7;
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+.project-type {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.nft-badge {
+  background-color: rgba(128, 90, 213, 0.2);
+  color: #b794f4;
+}
+
+.memecoin-badge {
+  background-color: rgba(56, 161, 105, 0.2);
+  color: #9ae6b4;
+}
+
+.defi-badge {
+  background-color: rgba(221, 107, 32, 0.2);
+  color: #fbd38d;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.project-link:hover {
+  color: #4299e1;
+}
+
+/* Contact Section */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.contact-card {
+  background-color: var(--bg-secondary);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.contact-link {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+  color: #4299e1;
+}
+
+/* Footer */
+.footer {
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  .sidebar:hover {
+    width: 240px;
+  }
+
+  .main-content {
+    padding-left: calc(70px + 2rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 240px;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-content {
+    padding-left: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-btn {
+    width: 100%;
+  }
+}
